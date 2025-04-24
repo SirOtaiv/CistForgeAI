@@ -1,0 +1,18 @@
+Estrutura de Projeto:
+1. Frontend
+Stack: Next.JS
+
+2. Backend
+Stack: FastAPI
+
+3. Recognize (IA Model)
+Stack: OpenCV, Numpy
+Infos:
+> Usar a mesma lógica de quadrantes para interpretação das imagens.
+> Usar KNN devido aos datasets não serem tão grandes.
+
+4. Cist_Generator
+Stack: OpenCV, Numpy
+Infos: 
+> Usar Apenas OpenCV para criar as imagens dos numeros através de uma entrada inteiro.
+> Criar as imagens usando a lógica de quadrantes para cada parte (Unidades (inf. dir), Dezenas (sup. dir), Centenas (inf. esq), Milhares (sup. esq)).
