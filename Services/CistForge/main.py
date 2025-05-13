@@ -1,6 +1,8 @@
 import cv2 as cv
 import numpy as np
 
+from Services.CistForge.quadrants.unit import unitLineGenerator
+
 x = 400
 thicknes, color, zPoint = 3, (0, 0, 0), 60
 
@@ -25,25 +27,13 @@ pointBlocks = [
     (aPoint + tPoint, bPoint),             # 12
     ]
 
-# Pontos de Referencia para geracao do pino central da imagem
-startPoint, endPoint = pointBlocks[1], pointBlocks[10]
-
 firstImage = np.ones((x, x, 3), dtype=np.uint8) * 255
 
 # Criando a linha central
 cv.line(firstImage, pointBlocks[1], pointBlocks[10], color, thicknes)
 
-# Printando numero 1
-cv.line(firstImage, pointBlocks[1], pointBlocks[2], color, thicknes)
-
-# Printando numero 20
-cv.line(firstImage, pointBlocks[3], pointBlocks[4], color, thicknes)
-
-# Printando numero 400
-cv.line(firstImage, pointBlocks[7], pointBlocks[11], color, thicknes)
-
-# Printando numero 6000
-cv.line(firstImage, pointBlocks[6], pointBlocks[9], color, thicknes)
+# Gerando usando função
+firstImage = unitLineGenerator(2, firstImage, pointBlocks, {"color": color, "thickness": thicknes})
 
 cv.imshow("Hello World", firstImage)
 k = cv.waitKey(0)
