@@ -6,46 +6,59 @@ from Services.CistForge.quadrants.hundred import hundredLineGenerator
 from Services.CistForge.quadrants.thousand import thousandLineGenerator
 from Services.CistForge.quadrants.unit import unitLineGenerator
 
-x = 400
-thicknes, color, zPoint = 3, (0, 0, 0), 60
+def split_digits(n: int, length: int = 4) -> list[int]:
+    return list(map(int, str(n).zfill(length)))
 
-aPoint, bPoint = (x // 2), (x - zPoint)
-tPoint = bPoint // 4
+def generate_cistercience_number(n: int) -> np.ndarray:
 
-pointBlocks = [
-    (aPoint - tPoint, zPoint),             # 1
-    (aPoint, zPoint),                      # 2
-    (aPoint + tPoint, zPoint),             # 3
+    x = 400
+    thicknes, color, zPoint = 3, (0, 0, 0), 60
 
-    (aPoint - tPoint, zPoint + tPoint),    # 4
-    (aPoint, zPoint + tPoint),             # 5
-    (aPoint + tPoint, zPoint + tPoint),    # 6
+    aPoint, bPoint = (x // 2), (x - zPoint)
+    tPoint = bPoint // 4
 
-    (aPoint - tPoint, bPoint - tPoint),    # 7
-    (aPoint, bPoint - tPoint),             # 8
-    (aPoint + tPoint, bPoint - tPoint),    # 9
+    pointBlocks = [
+        (aPoint - tPoint, zPoint),             # 1
+        (aPoint, zPoint),                      # 2
+        (aPoint + tPoint, zPoint),             # 3
 
-    (aPoint - tPoint, bPoint),             # 10
-    (aPoint, bPoint),                      # 11
-    (aPoint + tPoint, bPoint),             # 12
-    ]
+        (aPoint - tPoint, zPoint + tPoint),    # 4
+        (aPoint, zPoint + tPoint),             # 5
+        (aPoint + tPoint, zPoint + tPoint),    # 6
 
-firstImage = np.ones((x, x, 3), dtype=np.uint8) * 255
+        (aPoint - tPoint, bPoint - tPoint),    # 7
+        (aPoint, bPoint - tPoint),             # 8
+        (aPoint + tPoint, bPoint - tPoint),    # 9
 
-# Criando a linha central
-cv.line(firstImage, pointBlocks[1], pointBlocks[10], color, thicknes)
+        (aPoint - tPoint, bPoint),             # 10
+        (aPoint, bPoint),                      # 11
+        (aPoint + tPoint, bPoint),             # 12
+        ]
 
-# Gerando unidade 1
-firstImage = unitLineGenerator(9, firstImage, pointBlocks, {"color": color, "thickness": thicknes})
+    cistercience_number = np.ones((x, x, 3), dtype=np.uint8) * 255
 
-# Gerando unidade 10
-firstImage = centLineGenerator(5, firstImage, pointBlocks, {"color": color, "thickness": thicknes})
+    # Criando a linha central
+    cv.line(cistercience_number, pointBlocks[1], pointBlocks[10], color, thicknes)
 
-# Gerando unidade 100
-firstImage = hundredLineGenerator(8, firstImage, pointBlocks, {"color": color, "thickness": thicknes})
+    # Separando o numero
+    m, c, d, u = split_digits(n)
 
-# Gerando unidade 10000
-firstImage = thousandLineGenerator(6, firstImage, pointBlocks, {"color": color, "thickness": thicknes})
+    # Gerando unidade 1
+    cistercience_number = unitLineGenerator(u, cistercience_number, pointBlocks, {"color": color, "thickness": thicknes})
 
-cv.imshow("Hello World", firstImage)
-k = cv.waitKey(0)
+    # Gerando unidade 10
+    cistercience_number = centLineGenerator(d, cistercience_number, pointBlocks, {"color": color, "thickness": thicknes})
+
+    # Gerando unidade 100
+    cistercience_number = hundredLineGenerator(c, cistercience_number, pointBlocks, {"color": color, "thickness": thicknes})
+
+    # Gerando unidade 10000
+    cistercience_number = thousandLineGenerator(m, cistercience_number, pointBlocks, {"color": color, "thickness": thicknes})
+
+    return cistercience_number, n
+
+if __name__ == "__main__":
+
+    number_c, original = generate_cistercience_number(input("Insira um numero entre 0 e 9999:\n"))
+    cv.imshow(f"{original}:", number_c)
+    k = cv.waitKey(0)
