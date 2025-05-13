@@ -33,7 +33,7 @@ firstImage = np.ones((x, x, 3), dtype=np.uint8) * 255
 cv.line(firstImage, pointBlocks[1], pointBlocks[10], color, thicknes)
 
 # Gerando usando função
-firstImage = unitLineGenerator(2, firstImage, pointBlocks, {"color": color, "thickness": thicknes})
+firstImage = unitLineGenerator(5, firstImage, pointBlocks, {"color": color, "thickness": thicknes})
 
 cv.imshow("Hello World", firstImage)
 k = cv.waitKey(0)
