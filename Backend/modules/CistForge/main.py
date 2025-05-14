@@ -1,11 +1,11 @@
 import cv2 as cv
 import numpy as np
 
-from Services.CistForge.geometry import geometry_points_generate
-from Services.CistForge.quadrants.cent import centLineGenerator
-from Services.CistForge.quadrants.hundred import hundredLineGenerator
-from Services.CistForge.quadrants.thousand import thousandLineGenerator
-from Services.CistForge.quadrants.unit import unitLineGenerator
+from Backend.modules.CistForge.geometry import geometry_points_generate
+from Backend.modules.CistForge.quadrants.cent import centLineGenerator
+from Backend.modules.CistForge.quadrants.hundred import hundredLineGenerator
+from Backend.modules.CistForge.quadrants.thousand import thousandLineGenerator
+from Backend.modules.CistForge.quadrants.unit import unitLineGenerator
 
 def split_digits(n: int, length: int = 4) -> list[int]:
     return list(map(int, str(n).zfill(length)))

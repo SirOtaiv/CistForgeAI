@@ -1,8 +1,8 @@
 import cv2 as cv
 import numpy as np
 
-from Services.CistForge.geometry import geometry_points_generate
-from Services.CistForge.types import ImageConfig
+from Backend.modules.CistForge.geometry import geometry_points_generate
+from Backend.modules.CistForge.types import ImageConfig
 
 def centLineGenerator(n: int, image: np.ndarray, image_configs: ImageConfig):
 

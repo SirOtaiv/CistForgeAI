@@ -1,0 +1,6 @@
+fastapi
+fastapi[standard]
+uvicorn
+opencv-python
+numpy
+scikit-learn
