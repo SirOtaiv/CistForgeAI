@@ -8,12 +8,12 @@ Projeto completo para geração e reconhecimento de números cistercienses utili
 
 ```
 project-root/
-├── Backend/           # FastAPI - API central de orquestração
-├── Frontend/          # React/NextJS - Interface do usuário
-├── Services/
-│   ├── CistForge/     # Geração de imagens a partir de números arábicos
-│   └── CistMind/     # Reconhecimento de números a partir de imagem (IA)
-├── Docs/              # Documentação e anotações do projeto
+├── Backend/                # FastAPI - API central de orquestração
+│   ├── modules/            # Pasta com os módulos relacionados aos números cistercienses
+│       ├── CistForge/      # Geração de imagens a partir de números arábicos
+│       └── CistMind/       # Reconhecimento de números a partir de imagem (IA)
+├── Frontend/               # React/NextJS - Interface do usuário
+├── Docs/                   # Documentação e anotações do projeto
 ```
 
 ---
@@ -51,10 +51,8 @@ cd CistForgeAI
 
 ```bash
 cd backend
-python -m venv venv
-source venv/bin/activate  # ou venv\Scripts\activate no Windows
 pip install -r requirements.txt
-uvicorn main:app --reload
+fastapi dev main.py
 ```
 
 ### 3. Frontend (React/Next.js)
