@@ -1,9 +1,12 @@
 import { Typography } from "@mui/material";
 
+
 export default function Home() {
   return (
-    <Typography>
-      Ola mundo
-    </Typography>
+      <Typography
+        color="#fff"
+      >
+        Ola mundo <br/>
+      </Typography>
   );
 }
