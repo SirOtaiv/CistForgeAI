@@ -1,9 +1,10 @@
 "use client"
-import { Button, Paper, useTheme } from "@mui/material";
+import { Box, Button, Paper, useTheme } from "@mui/material";
 import TextField, { TextFieldRefProps } from "../../../components/Textfield";
 import { useRef } from "react";
+import ImageReader from "../../../components/ImageReader";
 
-export default function ConfigurationItems() {
+export default function ConfigurationItemsPage() {
 
     const appTheme = useTheme()
 
@@ -24,23 +25,45 @@ export default function ConfigurationItems() {
                 alignItems: 'center',
                 justifyContent: 'center',
                 backgroundColor: appTheme.palette.background.default,
+                flexDirection: 'column',
+                gap: 4,
             }}
         >
-            <TextField
-                ref={textfieldNaturalNumberRef}
-                label="Natural Number"
-                regularExpression={/^[0-9]{1,4}$/}
+            <Box
                 sx={{
-                    width: "80%",
-                    margin: "16px"
+                    width: "100%",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    gap: 2,
+                    flexDirection: "row",
                 }}
-            />
-            <Button
-                variant="contained"
-                onClick={generateCisterNumber}
             >
-                Submit Value
-            </Button>
+                <TextField
+                    ref={textfieldNaturalNumberRef}
+                    label="Natural Number"
+                    regularExpression={/^[0-9]{1,4}$/}
+                    sx={{
+                        width: "80%",
+                        margin: "16px"
+                    }}
+                />
+                <Button
+                    variant="contained"
+                    onClick={generateCisterNumber}
+                >
+                    Submit Value
+                </Button>
+            </Box>
+            <Box
+                sx={{
+                    width: "100%",
+                    display: "flex",
+                    justifyContent: "center",
+                }}
+            >
+                <ImageReader src="/next.svg" alt="Number" />
+            </Box>
         </Paper>
     )
 }
