@@ -170,7 +170,6 @@ const TextField = forwardRef((props: PropsType, ref) => {
             }}
             sx={{
                 ...materialProps.sx,
-                backgroundColor: "background.paper",
                 input: {
                     "&:-webkit-autofill": {
                         WebkitBoxShadow: `0 0 0 30px background.paper inset !important`,
