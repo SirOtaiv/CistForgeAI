@@ -3,7 +3,7 @@
 import { AppBar, Toolbar, Tooltip, Icon, Typography, IconButton, styled, Box, useTheme } from "@mui/material";
 import {
     AddCircleTwoTone as AddCircleTwoToneIcon,
-    HistoryTwoTone as HistoryTwoToneIcon,
+    ImageSearch as ImageSearchIcon,
     HelpTwoTone as HelpTwoToneIcon,
     AccountCircleTwoTone as AccountCircleTwoToneIcon,
 } from "@mui/icons-material";
@@ -127,7 +127,7 @@ export default function Navbar() {
                         </NoobsLink>
                     </Tooltip>
                     <>
-                        <Tooltip title="New">
+                        <Tooltip title="Generate Cisterciense Number">
                             <IconButton
                                 id="new_item_header"
                                 onClick={handleOnCreateButtonClick}
@@ -142,9 +142,9 @@ export default function Navbar() {
                         <NoobsLink
                             href="/changelog/all"
                         >
-                            <Tooltip title="Changelog">
+                            <Tooltip title="Read Cisterciense Image">
                                 <IconButton>
-                                    <HistoryTwoToneIcon
+                                    <ImageSearchIcon
                                         sx={{
                                             color: "#fff",
                                         }}
@@ -156,7 +156,7 @@ export default function Navbar() {
                     <Tooltip title="Help">
                         <IconButton
                             color="inherit"
-                            href={`/documentation/home/`}
+                            href={`https://github.com/SirOtaiv/CistForgeAI/blob/master/README.md`}
                             target="_blank"
                         >
                             <HelpTwoToneIcon />
